@@ -1,0 +1,69 @@
+nav.navbar {
+  margin-bottom: 0;
+  padding-top: 0; /* Adjusted padding */
+  padding-bottom: 0;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f9f9f9; /* Light background for better visuals */
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  font-family: 'Baloo Paaji 2', cursive;
+  margin-top: 20px; /* Added spacing from the navbar */
+}
+
+.card {
+  background-color: #85e1d0;
+  height: 20rem;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+  color: white;
+  text-align: center;
+}
+
+.card__name {
+  margin-top: 15px;
+  font-size: 1.5em;
+}
+
+.card__image {
+  height: 160px;
+  width: 160px;
+  border: 5px solid #009579;
+  margin-top: 20px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+}
+
+.givetest {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+a input.button {
+  color: #fff;
+  background: #009579;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  margin-top: 1.7rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+a input.button:hover {
+  background: #006653;
+}

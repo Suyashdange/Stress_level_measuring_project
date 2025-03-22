@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assessment Result</title>
+</head>
+<body>
+    <h1>Your Stress Assessment Result</h1>
+    {% comment %} <p><strong>Name:</strong> {{ response.name }}</p>
+    <p><strong>Email:</strong> {{ response.email }}</p> {% endcomment %}
+    <p><strong>Total Score:</strong> {{ response.total_score }}</p>
+    <p><strong>Stress Level:</strong> {{ stress_level }}</p>
+    <button><a class="nav-link" href="{% url 'appointment' %}">Book appointment</a></button>
+</body>
+</html>

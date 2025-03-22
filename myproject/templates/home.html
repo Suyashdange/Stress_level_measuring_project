@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Django Auth</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  
+  <!-- Load the static template tag library -->
+  {% load static %}
+
+  <!-- Reference the static CSS file -->
+  <link rel="stylesheet" href="{% static 'home.css' %}">
+  
+  <style>
+    
+    nav.navbar {
+      margin-bottom: 0;
+      padding: 15px 30px;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .navbar-nav .nav-item {
+      margin: 0 10px;
+    }
+
+    /* General styling */
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f9f9f9;
+    }
+
+    /* Button styling */
+    .givetest {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      margin-top: 20px;
+    }
+
+    a input.button {
+      color: #fff;
+      background: #009579;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+
+    a input.button:hover {
+      background: #006653;
+    }
+
+    /* Card styling */
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      font-family: 'Baloo Paaji 2', cursive;
+    }
+
+    .card {
+      background-color: #85e1d0;
+      height: 20rem;
+      width: 18rem;
+      border-radius: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      box-shadow: rgba(0, 0, 0, 0.5) 0px 5px 15px;
+      color: white;
+      padding: 20px;
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card__name {
+      margin-top: 15px;
+      font-size: 1.5em;
+    }
+
+    .card__image {
+      height: 160px;
+      width: 160px;
+      border: 5px solid #009579;
+      margin-top: 20px;
+      border-radius: 10px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .navbar-nav {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .givetest {
+        height: auto;
+        padding: 20px;
+      }
+
+      .card {
+        width: 100%;
+        margin-bottom: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-body-tertiary">
+  <div class="container">
+    <a class="navbar-brand me-2" href="{% url 'dashboard' %}">Home</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'appointment' %}">Book appointment</a>
+        </li>
+      </ul>
+      <div class="d-flex align-items-center">
+        {% if request.user.is_authenticated %}
+            <span class="me-3 px-3"><p>{{ request.user.email }}</p></span>
+            <a class="btn btn-dark px-3" href="{% url 'logout' %}">Logout</a>
+        {% else %}
+            <a href="{% url 'login' %}" class="btn btn-link px-3 me-2">Login</a>
+            <a href="{% url 'register' %}" class="btn btn-primary me-3">Sign up</a>
+        {% endif %}
+    </div>
+    </div>
+  </div>
+</nav>
+
+<div class="givetest">
+  <a href="{% url 'stress-assessment' %}">
+    <input type="button" class="button btn" value="Give Test">
+  </a>
+</div>
+
+<div class="container">
+  {% if tests %}
+    {% for test in tests %}
+      <div class="card">
+        <img src="https://www.ru-rocker.com/wp-content/uploads/2017/03/board-361516_1280.jpg" alt="Test" class="card__image">
+        <!-- <p class="card__name">Test ID: {{ test.testid }}</p> -->
+        <p>Date: <strong>{{ test.date|date:"d-m-Y H:i" }}</strong></p>
+        <p>Result: <strong>{{ test.result }}</strong></p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p>No tests found for this user.</p>
+  {% endif %}
+</div>
+</body>
+</html>

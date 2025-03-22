@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Paaji+2:wght@400;500&display=swap");
+
+    .container {
+      display: grid;
+      grid-template-columns: 300px 300px 300px;
+      grid-gap: 50px;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Baloo Paaji 2', cursive;
+    }
+    
+    .card {
+      background-color: #85e1d0;
+      height: 29rem;
+      border-radius: 5px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      box-shadow: rgba(0, 0, 0, 0.7);
+      color: white;
+    }
+    
+    .card__name {
+      margin-top: 15px;
+      font-size: 1.5em;
+    }
+    
+    .card__image {
+      height: 160px;
+      width: 160px;
+      border-radius: 50%;
+      border: 5px solid #009579;
+      margin-top: 20px;
+      box-shadow: 0 10px 50px rgba(0, 0, 0, 0.7);
+    }
+    a input.button{
+      color: #fff;
+      background: #009579;
+      font-size: 1.2rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-top: 1.7rem;
+      cursor: pointer;
+      transition: 0.4s;
+    }
+    a input.button:hover{
+      color: #fff;
+      background: #006653;
+    }
+    h1 {
+      color: #009579;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 2.5rem;
+  }
